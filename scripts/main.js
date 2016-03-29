@@ -24,6 +24,11 @@ var App = React.createClass({
 		}
 	},
 	addFish : function(fish) {
+		var timestamp = (new Date()).getTime();
+		// update state object
+		this.state.fishes['fish-' + timestamp] = fish;
+		// set the state
+		this.setState({ fishes : this.state.fishes }); 
 
 	},
 		render : function() {
@@ -58,6 +63,8 @@ var AddFishForm = React.createClass({
 					image : this.refs.image.value, 
 				}
 				//3. Add the fish to the App State
+
+			App.addFish(fish);
 				console.log(fish);
 			},
 			render : function () {
